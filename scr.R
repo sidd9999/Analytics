@@ -1,3 +1,4 @@
+#The quantmod package is used here
 install.packages('quantmod')
 library(quantmod)
 getSymbols('TSLA')
@@ -9,14 +10,13 @@ chartSeries(TSLA,type = "candlesticks",theme = chartTheme('white'))
 rsi=RSI(Cl(TSLA),n=14)
 tail(rsi,n=5)
 addRSI(n=14,maType = "EMA")
-#for evaluation of strategy installing the package
+#for evaluation of strategy installing the package PerformanceAnalytics
 install.packages("PerformanceAnalytics")
 library(PerformanceAnalytics)
 #creating strategy using rsi
-#buy 1 unit if rsi>50, else 0
-#delete upper comment
 #buy 1 unit if rsi<30, else 0
 day<-14
+#RSI 14b implies 14 day index
 price<-Cl(TSLA)
 View(price)
 signal<-c()
@@ -35,7 +35,7 @@ View(signal)
 qty<-300
 signal<-c()
 signal[1:(day+1)] <- 0
-price <- Cl(MSFT)
+price <- Cl(TSLA)
 stock <- c()  #stock holding
 stock[1:(day+1)] <-0
 price<-Cl(TSLA)
